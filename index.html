@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A tiny browser-native motion studio. Turn inline HTML and CSS into a downloadable video.">
+<title>Hyperframes — Tiny scenes. Real motion.</title>
+<style>
+:root{color-scheme:dark;--bg:#101212;--panel:#191c1b;--line:#303632;--muted:#929d95;--lime:#c6f776;--ink:#ecf0e9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,select,textarea{font:inherit}button,select,a{touch-action:manipulation}button:focus-visible,a:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--lime);outline-offset:4px}header{height:78px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 4.5%}.brand{font-size:22px;font-weight:750;letter-spacing:-1px;display:flex;align-items:center;gap:11px}.mark{display:inline-grid;place-items:center;color:var(--bg);background:var(--lime);width:29px;height:29px;transform:rotate(-8deg);font-size:23px;border-radius:5px}.badge{font:11px ui-monospace,monospace;color:var(--muted);letter-spacing:1px}.badge b{color:var(--lime);font-weight:400}main{max-width:1450px;margin:auto;padding:38px 4.5% 26px}.intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:30px}h1{font-size:clamp(27px,3vw,40px);letter-spacing:-1.6px;font-weight:550;line-height:1.15;margin:0 0 10px}p{margin:0;color:var(--muted)}.local{font:11px ui-monospace,monospace;border:1px solid var(--line);border-radius:30px;padding:9px 13px;white-space:nowrap}.dot{display:inline-block;width:6px;height:6px;background:var(--lime);border-radius:50%;margin-right:7px}.workspace{display:grid;grid-template-columns:1fr 1.15fr;gap:20px;align-items:start}.panel{border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden}.panel-head{display:flex;align-items:center;justify-content:space-between;padding:16px 19px;border-bottom:1px solid var(--line);gap:12px}.label{font:11px ui-monospace,monospace;letter-spacing:1.5px;text-transform:uppercase}.label span{color:var(--muted);margin-right:9px}select{max-width:220px;border:1px solid #414940;border-radius:6px;background:#242a25;color:var(--ink);padding:7px 30px 7px 10px;font-size:12px}.editor-bar{display:flex;gap:15px;align-items:center;padding:12px 19px;background:#141715;font:11px ui-monospace,monospace;color:var(--muted)}.file-dot{color:var(--lime)}.editor-shell{position:relative;background:#141715}textarea{display:block;width:100%;height:354px;resize:vertical;border:0;background:transparent;color:#becfae;padding:6px 20px 20px;line-height:1.8;font:12px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:2;white-space:pre;outline-offset:-2px!important}.editor-foot{padding:14px 19px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}.settings{display:flex;gap:0;padding:17px 19px;border-top:1px solid var(--line)}.setting{flex:1;border-right:1px solid var(--line);padding-left:20px}.setting:first-child{padding-left:0}.setting:last-child{border:0}.setting small{display:block;font-size:10px;color:var(--muted);margin-bottom:4px}.setting strong{font:12px ui-monospace,monospace;font-weight:400}.render-row{padding:0 19px 19px}button{border:0;border-radius:7px;cursor:pointer;background:var(--lime);color:#1b2614;font-weight:650;padding:13px 18px;width:100%;display:flex;justify-content:space-between}button:disabled{opacity:.6;cursor:wait}.preview-wrap{padding:19px;background:#20251f;background-image:radial-gradient(#394035 .8px,transparent .8px);background-size:13px 13px}.scene-viewport{aspect-ratio:16/9;width:100%;overflow:hidden;border-radius:5px;background:#c7f276;position:relative}.scene-scale{width:640px;height:360px;transform-origin:top left}.preview-meta{font:10px ui-monospace,monospace;color:var(--muted);padding:12px 19px;display:flex;justify-content:space-between}.output{margin-top:20px}.output-body{display:flex;align-items:center;gap:18px;padding:18px}video{width:42%;aspect-ratio:16/9;background:#101410;border:1px solid var(--line);border-radius:5px}.output-detail{flex:1;min-width:0}.output-detail h3{font-size:13px;margin:0 0 4px;font-weight:500}.output-detail p{font-size:11px;margin-bottom:12px}.download{display:inline-block;text-decoration:none;color:var(--lime);font-size:12px;border:1px solid #4b6140;padding:8px 12px;border-radius:5px}.download[aria-disabled=true]{opacity:.4;pointer-events:none}.progress-area{padding:15px 19px;border-top:1px solid var(--line)}.status-row{display:flex;justify-content:space-between;font:11px ui-monospace,monospace;gap:12px}#status{color:var(--muted)}#status.error{color:#ffae91}progress{display:block;width:100%;height:3px;border:0;margin-top:12px;background:#30382c;accent-color:var(--lime)}progress::-webkit-progress-bar{background:#30382c}progress::-webkit-progress-value{background:var(--lime)}.how{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:30px;padding-top:23px;border-top:1px solid var(--line)}.how h2{font-size:12px;font-weight:500;margin:0 0 6px}.how h2 span{font:10px ui-monospace,monospace;color:var(--lime);margin-right:8px}.how p{font-size:12px;max-width:320px}footer{display:flex;justify-content:space-between;margin-top:32px;color:#6f7b71;font:10px ui-monospace,monospace}#render-canvas{position:absolute;width:1px;height:1px;left:-10000px}noscript{display:block;padding:20px;color:#ffae91}@media(max-width:850px){.workspace{grid-template-columns:1fr}.intro{display:block}.local{display:inline-block;margin-top:16px}main{padding-top:26px}.how{gap:16px}header{height:65px}.badge{font-size:9px}}@media(max-width:480px){.how{grid-template-columns:1fr}.panel-head{padding:14px 12px}.label{font-size:10px}select{max-width:175px}.output-body{gap:12px;padding:12px}footer{gap:12px}.badge{letter-spacing:0}textarea{height:280px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><span class="mark">▥</span>hyperframes</div><span class="badge">A LITTLE CODE. <b>A LOT OF MOTION.</b></span></header>
+<main>
+<div class="intro"><div><h1>Tiny scenes. Real motion.</h1><p>Turn HTML &amp; CSS into a video, right here in your browser.</p></div><div class="local"><span class="dot"></span>100% local · No uploads</div></div>
+<div class="workspace">
+<section class="panel"><div class="panel-head"><div class="label"><span>01</span>Scene editor</div><select id="preset-select" aria-label="Example scene"><option value="orbit">Orbit study</option><option value="type">Type in motion</option><option value="bars">Signal rhythm</option></select></div>
+<div class="editor-bar"><span class="file-dot">●</span> scene.html <span style="margin-left:auto">HTML + CSS</span></div>
+<div class="editor-shell"><textarea id="scene-input" aria-label="Scene HTML and CSS" spellcheck="false" wrap="off"><style>
+.scene { width:640px; height:360px; overflow:hidden;
+  position:relative; background:#c7f276; color:#172410;
+  font-family:Arial,sans-serif; }
+.title { position:absolute; left:36px; top:42px;
+  font-size:64px; font-weight:700; line-height:.95;
+  letter-spacing:-4px; }
+.caption { position:absolute; left:39px; bottom:30px;
+  font-size:11px; letter-spacing:2px; }
+.orbit { position:absolute; width:250px; height:250px;
+  right:32px; top:55px; border:1px solid #688a42;
+  border-radius:50%; animation:spin 3s linear infinite; }
+.orbit::before { content:""; position:absolute;
+  width:55px; height:55px; top:10px; left:12px;
+  background:#23351b; border-radius:50%; }
+.core { position:absolute; width:115px; height:115px;
+  right:100px; top:123px; border-radius:50%;
+  background:#f0ffce; box-shadow:0 0 0 22px #b5df68;
+  animation:breathe 1.5s ease-in-out infinite alternate; }
+@keyframes spin { to { transform:rotate(360deg); } }
+@keyframes breathe { to { transform:scale(.72); } }
+</style>
+<div class="scene">
+  <div class="title">Stay<br>in orbit.</div>
+  <div class="caption">MOTION STUDY — 001</div>
+  <div class="orbit"></div><div class="core"></div>
+</div></textarea></div>
+<div class="editor-foot">Inline HTML &amp; CSS only. No scripts, external images, or fonts.</div>
+<div class="settings"><div class="setting"><small>RESOLUTION</small><strong>640 × 360</strong></div><div class="setting"><small>DURATION</small><strong>3 seconds</strong></div><div class="setting"><small>FRAME RATE</small><strong>24 fps</strong></div></div>
+<div class="render-row"><button id="render-btn"><span>Render video</span><span aria-hidden="true">↗</span></button></div></section>
+<div><section class="panel"><div class="panel-head"><div class="label"><span>02</span>Live preview</div><span class="badge"><span class="dot"></span>LIVE CSS</span></div><div class="preview-wrap"><div class="scene-viewport"><div id="scene-host" class="scene-scale"></div></div></div><div class="preview-meta"><span>16:9 / 640 × 360</span><span>YOUR SCENE, IN MOTION</span></div></section>
+<section class="panel output"><div class="panel-head"><div class="label"><span>03</span>Your video</div><span id="format-badge" class="badge">PREPARING</span></div><div class="output-body"><video id="result-video" controls muted loop playsinline aria-label="Rendered scene video"></video><div class="output-detail"><h3 id="output-title">Your first render is on its way</h3><p id="output-meta">72 frames. One tiny video.</p><a id="download-link" class="download" aria-disabled="true" download="hyperframes.webm">↓ Download video</a></div></div><div class="progress-area"><div class="status-row"><span id="status" role="status" aria-live="polite">Preparing the example scene…</span><span id="frame-count">0 / 72</span></div><progress id="progress" max="72" value="0" aria-label="Render progress"></progress></div></section></div>
+</div>
+<div class="how"><div><h2><span>01 /</span> Make it yours</h2><p>Start with a study. Tweak a color, a word, or an animation in the editor.</p></div><div><h2><span>02 /</span> Capture the motion</h2><p>Animations are scrubbed frame by frame, then recorded on a local canvas.</p></div><div><h2><span>03 /</span> Take it with you</h2><p>A real video file. MP4 when supported, WebM otherwise. Always yours.</p></div></div>
+<footer><span>HYPERFRAMES / BROWSER-NATIVE MOTION STUDIO</span><span>No server. No account. Just frames.</span></footer>
+<noscript>JavaScript is required to preview animations and render a video. Enable JavaScript to use this local motion studio.</noscript>
+</main><canvas id="render-canvas" width="640" height="360" aria-label="Video capture canvas"></canvas>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const W=640,H=360,FPS=24,SECONDS=3,FRAMES=FPS*SECONDS;
+const presets={orbit:$('scene-input').value,type:`<style>
+.scene { width:640px; height:360px; overflow:hidden; position:relative; background:#7460ed; color:#fff4d3; font-family:Arial,sans-serif; }
+.label { position:absolute; top:28px; left:32px; font-size:11px; letter-spacing:3px; }
+.word { position:absolute; left:30px; top:88px; font-size:100px; font-weight:900; letter-spacing:-7px; animation:slide 3s ease-in-out infinite; }
+.line { position:absolute; left:36px; bottom:53px; width:565px; height:12px; background:#d6fa81; transform-origin:left; animation:stretch 1.5s ease-in-out infinite alternate; }
+@keyframes slide { 0%,100% { transform:translateX(0) rotate(-3deg); } 50% { transform:translateX(55px) rotate(3deg); } }
+@keyframes stretch { to { transform:scaleX(.25); } }
+</style>
+<div class="scene"><div class="label">TYPE EXPERIMENT / 002</div><div class="word">Make<br style="display:none"> moves.</div><div class="line"></div></div>`,bars:`<style>
+.scene { width:640px; height:360px; background:#172c35; color:#e6f1e3; position:relative; overflow:hidden; font-family:Arial,sans-serif; }
+.label { position:absolute; top:28px; left:32px; font-size:11px; letter-spacing:3px; }
+.bars { position:absolute; left:45px; bottom:75px; width:550px; height:190px; display:flex; align-items:center; gap:12px; }
+.bar { flex:1; height:100%; border-radius:25px; background:#b9f577; animation:pulse 1.5s ease-in-out infinite alternate; }
+.bar:nth-child(2n) { background:#68cdb4; animation-delay:-.4s; }
+.bar:nth-child(3n) { background:#f0b78d; animation-delay:-.8s; }
+.bar:nth-child(4n) { animation-delay:-1.2s; }
+.caption { position:absolute; bottom:25px; right:32px; font-size:12px; }
+@keyframes pulse { from { transform:scaleY(.15); } to { transform:scaleY(1); } }
+</style>
+<div class="scene"><div class="label">SIGNAL RHYTHM / 003</div><div class="bars">${'<div class="bar"></div>'.repeat(12)}</div><div class="caption">Find your frequency.</div></div>`};
+const shadow=$('scene-host').attachShadow({mode:'open'});
+let stage, busy=false, resultURL, editTimer;
+const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+function report(error){$('status').classList.add('error');$('status').textContent='Render failed: '+error.message;}
+function validate(source){
+ if(source.length>40000)throw new Error('Keep the scene under 40,000 characters.');
+ const allowed=new Set(['DIV','SPAN','P','H1','H2','H3','H4','BR','B','I','EM','STRONG','SMALL','SECTION','ARTICLE','MAIN','HEADER','FOOTER','UL','OL','LI','STYLE']);
+ // Reject resource-bearing markup before even parsing an inert document.
+ for(const match of source.matchAll(/<\s*([a-z][\w:-]*)/gi))if(!allowed.has(match[1].toUpperCase()))throw new Error('Unsupported scene element: '+match[1]+'. Use inline HTML and CSS only.');
+ const doc=new DOMParser().parseFromString(source,'text/html');
+ for(const el of [...doc.head.children,...doc.body.querySelectorAll('*')]){
+  if(!allowed.has(el.tagName))throw new Error('Only inline scene markup and CSS are supported; remove '+el.tagName.toLowerCase()+'.');
+  for(const a of el.attributes)if(!['class','id','style','title','lang','dir'].includes(a.name))throw new Error('Unsupported attribute: '+a.name+'. Use only class, id, style, title, lang, or dir.');
+ }
+ const css=[...doc.querySelectorAll('style')].map(s=>s.textContent).join('\n')+'\n'+[...doc.querySelectorAll('[style]')].map(e=>e.getAttribute('style')).join('\n');
+ if(/url\s*\(|@import|@font-face|image-set\s*\(|\\|\/\*|<\/style/i.test(css))throw new Error('Use inline CSS without resource URLs, imports, comments, or escapes.');
+ return doc;
+}
+function updateScene(){
+ const doc=validate($('scene-input').value);
+ shadow.replaceChildren();
+ const base=document.createElement('style');base.textContent=':host{all:initial;display:block;width:640px;height:360px;overflow:hidden}*{box-sizing:border-box}';shadow.append(base);
+ stage=document.createElement('div');stage.style.cssText='width:640px;height:360px;overflow:hidden;position:relative;isolation:isolate;background:#101212;contain:strict;color:#ecf0e9;font-family:Arial,sans-serif';
+ for(const e of [...doc.head.children,...doc.body.childNodes])stage.append(document.importNode(e,true));
+ shadow.append(stage);
+}
+function fit(){const v=document.querySelector('.scene-viewport');$('scene-host').style.transform=`scale(${v.clientWidth/W})`;}
+new ResizeObserver(fit).observe(document.querySelector('.scene-viewport'));
+function freezeStyles(source){
+ const copy=source.cloneNode(false);copy.removeAttribute('id');
+ const computed=getComputedStyle(source);
+ for(const key of computed)copy.style.setProperty(key,computed.getPropertyValue(key));
+ copy.style.setProperty('animation','none','important');copy.style.setProperty('transition','none','important');
+ const pseudo=which=>{
+  const s=getComputedStyle(source,which),content=s.content;
+  if(!content||content==='none'||content==='normal')return null;
+  const el=document.createElement('span');
+  for(const key of s)el.style.setProperty(key,s.getPropertyValue(key));
+  el.style.setProperty('animation','none','important');el.style.setProperty('transition','none','important');
+  el.textContent=content.replace(/^['"]|['"]$/g,'');return el;
+ };
+ const before=pseudo('::before');if(before)copy.append(before);
+ for(const child of source.childNodes){if(child.nodeType===1&&child.tagName!=='STYLE')copy.append(freezeStyles(child));else if(child.nodeType===3)copy.append(child.cloneNode());}
+ const after=pseudo('::after');if(after)copy.append(after);
+ return copy;
+}
+function svgFrame(){const clone=freezeStyles(stage);clone.setAttribute('xmlns','http://www.w3.org/1999/xhtml');return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><foreignObject width="100%" height="100%">${new XMLSerializer().serializeToString(clone)}</foreignObject></svg>`;}
+function loadImage(url){return new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>resolve(img);img.onerror=()=>reject(new Error('Could not rasterize the inline scene. Check the HTML and CSS.'));img.src=url;});}
+let svgMode='blob';
+async function drawFrame(){
+ const svg=svgFrame();const canvas=$('render-canvas');
+ let url=svgMode==='blob'?URL.createObjectURL(new Blob([svg],{type:'image/svg+xml;charset=utf-8'})):'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+ try{const img=await loadImage(url);const ctx=canvas.getContext('2d');ctx.clearRect(0,0,W,H);ctx.drawImage(img,0,0);ctx.getImageData(0,0,1,1);}
+ catch(error){if(svgMode==='blob'&&error.name==='SecurityError'){svgMode='data';canvas.width=W;await drawFrame();}else throw error;}
+ finally{if(url.startsWith('blob:'))URL.revokeObjectURL(url);}
+}
+// MediaRecorder WebM streams often omit duration. Add it to the EBML Info
+// element so a saved three-second clip reports its duration without seeking.
+async function withDuration(blob){
+ const bytes=new Uint8Array(await blob.arrayBuffer());
+ function vint(at,id=false){let len=1;while(len<=8&&!(bytes[at]&(1<<(8-len))))len++;if(len>8||at+len>bytes.length)throw new Error('Invalid WebM element.');let value=id?bytes[at]:bytes[at]&((1<<(8-len))-1);for(let i=1;i<len;i++)value=value*256+bytes[at+i];return {len,value};}
+ function size(value,len){const a=new Uint8Array(len);for(let i=len-1;i>=0;i--){a[i]=value%256;value=Math.floor(value/256);}a[0]|=1<<(8-len);return a;}
+ let segment;
+ for(let p=0;p<bytes.length;){const id=vint(p,true),s=vint(p+id.len),start=p+id.len+s.len;if(id.value===0x18538067){segment={p,sizePos:p+id.len,s,start};break;}p=start+s.value;}
+ if(!segment)throw new Error('Recorded WebM has no media segment.');
+ for(let p=segment.start;p<bytes.length;){const id=vint(p,true),s=vint(p+id.len),start=p+id.len+s.len,end=start+s.value;if(id.value===0x1549a966){
+  let scale=1000000,existing=-1;
+  for(let q=start;q<end;){const ci=vint(q,true),cs=vint(q+ci.len),v=q+ci.len+cs.len;if(ci.value===0x2ad7b1){scale=0;for(let j=0;j<cs.value;j++)scale=scale*256+bytes[v+j];}if(ci.value===0x4489)existing=v;q=v+cs.value;}
+  if(existing>=0){new DataView(bytes.buffer).setFloat64(existing,SECONDS*1e9/scale);return new Blob([bytes],{type:blob.type});}
+  const duration=new Uint8Array(11);duration.set([0x44,0x89,0x88]);new DataView(duration.buffer).setFloat64(3,SECONDS*1e9/scale);
+  const newSize=size(s.value+11,s.len);if(s.value+11>=Math.pow(2,7*s.len)-1)throw new Error('WebM metadata size exceeds its allocated header.');
+  const unknown=segment.s.value>=Math.pow(2,7*segment.s.len)-1;
+  if(!unknown)bytes.set(size(segment.s.value+11,segment.s.len),segment.sizePos);
+  return new Blob([bytes.slice(0,p+id.len),newSize,bytes.slice(start,end),duration,bytes.slice(end)],{type:blob.type});
+ }p=end;}
+ throw new Error('Recorded WebM has no metadata section.');
+}
+async function render(){
+ if(busy)return;busy=true;$('render-btn').disabled=true;$('preset-select').disabled=true;$('scene-input').readOnly=true;$('status').classList.remove('error');$('progress').value=0;$('frame-count').textContent='0 / 72';
+ let animations=[],stream,recorder,recordingFailure;
+ try{
+  if(!window.MediaRecorder||!HTMLCanvasElement.prototype.captureStream)throw new Error('This browser does not support local video recording. Use Chromium.');
+  updateScene();await new Promise(resolve=>requestAnimationFrame(resolve));
+  animations=stage.getAnimations({subtree:true});for(const a of animations){a.pause();a.currentTime=0;}
+  await drawFrame();
+  stream=$('render-canvas').captureStream(0);const track=stream.getVideoTracks()[0];if(!track.requestFrame)throw new Error('Manual canvas capture is unavailable. Use Chromium.');
+  const type=['video/mp4;codecs=avc1.42E01E','video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'].find(t=>MediaRecorder.isTypeSupported(t));if(!type)throw new Error('No supported video encoder is available.');
+  recorder=new MediaRecorder(stream,{mimeType:type,videoBitsPerSecond:2200000});const chunks=[];
+  const stopped=new Promise(resolve=>{recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};recorder.onstop=resolve;});
+  recorder.onerror=e=>{recordingFailure=new Error(e.error?.message||'The video encoder failed.');};
+  recorder.start();const start=performance.now();
+  for(let frame=0;frame<FRAMES;frame++){
+   if(recordingFailure)throw recordingFailure;
+   for(const a of animations)a.currentTime=frame*1000/FPS;
+   if(frame)await drawFrame();
+   await sleep(Math.max(0,start+frame*1000/FPS-performance.now()));track.requestFrame();
+   $('progress').value=frame+1;$('frame-count').textContent=`${frame+1} / ${FRAMES}`;$('status').textContent=`Rendering frame ${frame+1} of ${FRAMES}…`;
+  }
+  await sleep(Math.max(0,start+SECONDS*1000-performance.now()));recorder.stop();await stopped;if(recordingFailure)throw recordingFailure;
+  let blob=new Blob(chunks,{type:recorder.mimeType});if(!blob.size)throw new Error('The encoder returned an empty video.');
+  const ext=blob.type.includes('mp4')?'mp4':'webm';if(ext==='webm')blob=await withDuration(blob);
+  const previous=resultURL;resultURL=URL.createObjectURL(blob);const video=$('result-video');
+  await new Promise((resolve,reject)=>{const timer=setTimeout(()=>{clean();reject(new Error('The recorded video did not load metadata.'));},4000);function clean(){clearTimeout(timer);video.onloadedmetadata=null;video.onerror=null;}video.onloadedmetadata=()=>{clean();resolve();};video.onerror=()=>{clean();reject(new Error('The browser could not decode its recorded video.'));};video.src=resultURL;video.load();});
+  if(previous)URL.revokeObjectURL(previous);
+  $('download-link').href=resultURL;$('download-link').download=`hyperframes-${$('preset-select').value}.${ext}`;$('download-link').setAttribute('aria-disabled','false');
+  $('format-badge').textContent=ext.toUpperCase();$('output-title').textContent='A little motion, ready to go.';$('output-meta').textContent=`3 seconds · ${ext.toUpperCase()} · ${Math.round(blob.size/1024)} KB`;$('status').textContent='Done — your video is ready.';
+ }catch(error){report(error);}finally{
+  if(recorder&&recorder.state!=='inactive')recorder.stop();if(stream)stream.getTracks().forEach(t=>t.stop());for(const a of animations){a.currentTime=0;a.play();}
+  busy=false;$('render-btn').disabled=false;$('preset-select').disabled=false;$('scene-input').readOnly=false;
+ }
+}
+$('render-btn').addEventListener('click',render);
+$('preset-select').addEventListener('change',()=>{clearTimeout(editTimer);$('scene-input').value=presets[$('preset-select').value];try{updateScene();$('status').classList.remove('error');$('status').textContent='Scene loaded. Render to export this version.';}catch(error){report(error);}});
+$('scene-input').addEventListener('input',()=>{clearTimeout(editTimer);editTimer=setTimeout(()=>{try{updateScene();$('status').classList.remove('error');$('status').textContent='Preview updated. Render to export your changes.';}catch(error){report(error);}},350);});
+try{updateScene();fit();}catch(error){report(error);}
+render();
+</script>
+</body></html>
